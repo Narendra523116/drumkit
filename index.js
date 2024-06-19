@@ -1,103 +1,77 @@
-document.addEventListener("keypress", function(event){
-    let c = event.key;
+var buttons = document.querySelectorAll(".drum");
 
-    switch(c){
+buttons.forEach(function(button){
+    button.addEventListener("click", function(){
+        makeSound(button.innerHTML) ;
+        animate(button.innerHTML) ;
+    }) ;
+
+    button.addEventListener("keypress", function(event){
+        makeSound(event.key) ;
+        animate(event.key);
+    })
+}) ;
+
+
+function animate(button){
+    // if(button == 'w' || )
+
+    var buttonElement = document.querySelector("."+button);
+
+    if(buttonElement){
+        buttonElement.classList.add("pressed");
+
+        var delay = 200;
+
+        setTimeout(function(){
+            buttonElement.classList.remove("pressed");
+        }, delay);
+    }
+    
+}
+
+function makeSound(key){
+    switch(key){
         case 'w' :{
-            var song = new Audio("sounds/tom-0.mp3");
-            song.play();
+            var sound = new Audio("./sounds/tom-0.mp3");
+            sound.play();
             break;
         }
 
-        case 'a' :{
-            var song = new Audio("sounds/tom-1.mp3");
-            song.play();
+        case 'a':{
+            var sound = new Audio("./sounds/tom-1.mp3");
+            sound.play();
             break;
         }
 
-        case 's' :{
-            var song = new Audio("sounds/tom-2.mp3");
-            song.play();
+        case 's':{
+            var sound = new Audio("./sounds/tom-2.mp3");
+            sound.play();
             break;
         }
 
-        case 'd' :{
-            var song = new Audio("sounds/tom-3.mp3");
-            song.play();
+        case 'd':{
+            var sound = new Audio("./sounds/tom-3.mp3");
+            sound.play();
             break;
         }
 
-        case 'j' :{
-            var song = new Audio("sounds/tom-4.mp3");
-            song.play();
-        }
-
-        case 'k' :{
-            var song = new Audio("sounds/tom-5.mp3");
-            song.play();
+        case 'j':{
+            var sound = new Audio("./sounds/tom-4.mp3");
+            sound.play();
             break;
         }
 
-        case 'l' :{
-            var song = new Audio("sounds/tom-6.mp3");
-            song.play();
+        case 'k':{
+            var sound = new Audio("./sounds/tom-5.mp3");
+            sound.play();
+            break;
+        }
+
+        case 'l':{
+            var sound = new Audio("./sounds/tom-6.mp3");
+            sound.play();
             break;
         }
     }
-})
-
-
-var numberOfButtons = document.querySelectorAll(".drum").length;
-
-for(let i = 0; i < numberOfButtons; i++){
-    document.querySelectorAll(".drum")[i].addEventListener("click", function(){
-        switch(i){
-            case 0 :{
-                var song = new Audio("sounds/tom-0.mp3");
-                song.play();
-                break;
-            }
-
-            case 1 :{
-                var song = new Audio("sounds/tom-1.mp3");
-                song.play();
-                break;
-            }
-
-            case 2 :{
-                var song = new Audio("sounds/tom-2.mp3");
-                song.play();
-                break;
-            }
-
-            case 3 :{
-                var song = new Audio("sounds/tom-3.mp3");
-                song.play();
-                break;
-            }
-
-            case 4 :{
-                var song = new Audio("sounds/tom-4.mp3");
-                song.play();
-                break;
-            }
-
-            case 5 :{
-                var song = new Audio("sounds/tom-5.mp3");
-                song.play();
-                break;
-            }
-
-            case 6 :{
-                var song = new Audio("sounds/tom-6.mp3");
-                song.play();
-                break;
-            }
-
-            
-        }
-    })
 }
-
-
-
-
